@@ -44,28 +44,60 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    
+    // 3 sections
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    
+    // section 0 will have 2 rows
+    // section 1 will have 1 row
+    // section 2 will have 3 rows
+    switch (section) {
+        case 0:
+            return 2;
+        case 1:
+            return 1;
+        case 2:
+            return 3;
+        default:
+            break;
+    }
     return 0;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
     
+    switch (indexPath.section) {
+        case 0:
+            // first section willl have static text
+            cell.textLabel.text = @"I am in section 0";
+            cell.textLabel.textColor = [UIColor redColor];
+            return cell;
+        case 1:
+            // second section will have static text
+            cell.textLabel.text = @"another section";
+            cell.textLabel.textColor = [UIColor blueColor];
+            return cell;
+        case 2:
+            // third section will have row number
+            cell.textLabel.text = [NSString stringWithFormat:@"Cell %i", indexPath.row];
+            cell.textLabel.textColor = [UIColor yellowColor];
+            return cell;
+        default:
+            break;
+    }
+    
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
